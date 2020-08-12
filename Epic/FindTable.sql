@@ -1,5 +1,5 @@
 declare @NamaTable varchar(100)
-select @NamaTable =  RTRIM(LTRIM( '   Trxubahtglpengiriman      '))
+select @NamaTable =  RTRIM(LTRIM( '   mypos      '))
 
 SELECT TABLE_NAME
 FROM INFORMATION_SCHEMA.TABLES
