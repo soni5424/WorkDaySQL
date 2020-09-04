@@ -1,0 +1,1 @@
+exec Log_PinsertLog_TableLock
