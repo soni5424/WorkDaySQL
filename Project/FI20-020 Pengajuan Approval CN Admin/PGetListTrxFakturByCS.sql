@@ -101,14 +101,14 @@ BEGIN
             JenisFaktur, 
             Tanggal, 
             coalesce(NoMember,'')as NoMember, 
-             NamaPembeli,
-             NamaPenerima, 
+            NamaPembeli,
+            NamaPenerima, 
             KodeUserKasir,
             NoSO ,
-	        coalesce(b.nama,'Diambil Sendiri') as StatusPenyerahan,
-	        NamaPenerima,
-	        AlamatPenerima,
-	        coalesce(TelpPenerima,'') as TelpPenerima
+            coalesce(b.nama,'Diambil Sendiri') as StatusPenyerahan,
+            NamaPenerima,
+            AlamatPenerima,
+            coalesce(TelpPenerima,'') as TelpPenerima
         FROM 
             TrxFaktur a 
             left join (select * from masterpilihan where grup='StatusPenyerahan') b on a.statuspenyerahan=b.nilai
