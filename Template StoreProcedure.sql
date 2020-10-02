@@ -2,7 +2,7 @@ USE HARTONO
 GO
 -- =============================================
 -- Created By	: Soni Gunawan
--- Create Date	: .8.20
+-- Create Date	: .10.20
 -- Description	: 
 -- =============================================
 CREATE PROCEDURE _
