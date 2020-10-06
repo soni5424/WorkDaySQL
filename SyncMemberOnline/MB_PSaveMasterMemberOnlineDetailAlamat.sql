@@ -6,22 +6,31 @@ GO
 -- Description	: Save MasterMemberOnlineDetailAlamat
 -- =============================================
 
-CREATE PROCEDURE MB_PSaveMasterMemberOnlineDetailAlamat
+ALTER PROCEDURE MB_PSaveMasterMemberOnlineDetailAlamat
     @NoIDOnline     varchar(50),
     @IDAlamat       int,
     @Alamat         varchar(50)
 AS
 BEGIN
 
-    INSERT INTO [dbo].[MasterMemberOnlineDetailAlamat] (
-        [NoIDOnline]
-        ,[IDAlamat]
-        ,[Alamat]
-    ) VALUES (
-        @NoIDOnline,
-        @IDAlamat,
-        @Alamat
-    )
-
+    IF (NOT EXISTS (SELECT * FROM MasterMemberOnlineDetailAlamat WHERE NoIDOnline=@NoIDOnline))
+    BEGIN
+        INSERT INTO [dbo].[MasterMemberOnlineDetailAlamat] (
+            [NoIDOnline]
+            ,[IDAlamat]
+            ,[Alamat]
+        ) VALUES (
+            @NoIDOnline,
+            @IDAlamat,
+            @Alamat
+        )
+    END
+    ELSE
+    BEGIN
+        UPDATE [dbo].[MasterMemberOnlineDetailAlamat]
+        SET [Alamat] = @Alamat
+        WHERE [NoIDOnline] = @NoIDOnline
+            AND [IDAlamat] = @IDAlamat
+    END
 END
 GO

@@ -6,7 +6,7 @@ GO
 -- Description	: Save MasterMemberOnline
 -- =============================================
 
-CREATE PROCEDURE MB_PSaveMasterMemberOnline
+ALTER PROCEDURE MB_PSaveMasterMemberOnline
     @NoIDOnline     varchar(50),
     @Email          varchar(50),
     @NamaDepan      varchar(50),
@@ -15,20 +15,33 @@ CREATE PROCEDURE MB_PSaveMasterMemberOnline
     @NoHP           varchar(50)
 AS
 BEGIN
-    INSERT INTO [dbo].[MasterMemberOnline] (
-        [NoIDOnline]
-        ,[Email]
-        ,[NamaDepan]
-        ,[NamaBelakang]
-        ,[TanggalLahir]
-        ,[NoHP]
-    ) VALUES (
-        @NoIDOnline,
-        @Email,
-        @NamaDepan,
-        @NamaBelakang,
-        @TanggalLahir,
-        @NoHP
-    )
+    IF (NOT EXISTS(SELECT * FROM MasterMemberOnline))
+    BEGIN
+        INSERT INTO [dbo].[MasterMemberOnline] (
+            [NoIDOnline]
+            ,[Email]
+            ,[NamaDepan]
+            ,[NamaBelakang]
+            ,[TanggalLahir]
+            ,[NoHP]
+        ) VALUES (
+            @NoIDOnline,
+            @Email,
+            @NamaDepan,
+            @NamaBelakang,
+            @TanggalLahir,
+            @NoHP
+        )
+    END
+    ELSE
+    BEGIN 
+        UPDATE [dbo].[MasterMemberOnline]
+        SET [Email] = @Email,
+            [NamaDepan] = @NamaDepan,
+            [NamaBelakang] = @NamaBelakang,
+            [TanggalLahir] = @TanggalLahir,
+            [NoHP] = @NoHP
+        WHERE NoIDOnline = @NoIDOnline
+    END
 END
 GO

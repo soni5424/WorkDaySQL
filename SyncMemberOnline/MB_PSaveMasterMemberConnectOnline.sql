@@ -6,17 +6,26 @@ GO
 -- Description	: Save MasterMemberConnectOnline
 -- =============================================
 
-CREATE PROCEDURE MB_PSaveMasterMemberConnectOnline
+ALTER PROCEDURE MB_PSaveMasterMemberConnectOnline
     @NoMember   varchar(50),
     @NoIDOnline varchar(50)
 AS
 BEGIN
-    INSERT INTO [dbo].[MasterMemberConnectOnline] (
-        [NoMember]
-        ,[NoIDOnline]
-    ) VALUES (
-        @NoMember,
-        @NoIDOnline
-    )
+    IF (NOT EXISTS(SELECT * FROM MasterMemberConnectOnline WHERE NoIDOnline=@NoIDOnline))
+    BEGIN
+        INSERT INTO [dbo].[MasterMemberConnectOnline] (
+            [NoMember]
+            ,[NoIDOnline]
+        ) VALUES (
+            @NoMember,
+            @NoIDOnline
+        )
+    END
+    ELSE
+    BEGIN
+        UPDATE [dbo].[MasterMemberConnectOnline]
+        SET [NoMember] = @NoMember
+        WHERE NoIDOnline = @NoIDOnline
+    END
 END
 GO
