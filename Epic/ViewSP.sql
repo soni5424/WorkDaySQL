@@ -1,4 +1,3 @@
 declare @NamaSP varchar(100)
-select @NamaSP =  
-RTRIM(LTRIM( '   sp_MSupd_dboSAP_ARTICLE       '))
+select @NamaSP =  RTRIM(LTRIM( '   PGetStatusApprovalCNAdmin       '))
 EXEC sp_helptext @NamaSP
