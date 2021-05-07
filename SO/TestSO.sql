@@ -1,9 +1,10 @@
 use Hartono
 declare @NoSO varchar(50)
-set @NoSO='02A-07-A46-00138'
+--set @NoSO='02A-07-F50-00021'
+set @NoSO='02A-07-A21-00087'
+--set @NoSO='02A-07-A91-00059'
 
 select nososap_salesdocument, * from TrxSO where noso=@NoSO
-select nososap_salesdocument, * from TrxFaktur where noso=@NoSO
 select * from TrxSODetail where noso=@NoSO
 select * from PR_TrxSODetailWithPromo where noso=@NoSO
 select * from SAP_TrxSOSTO where noso=@NoSO

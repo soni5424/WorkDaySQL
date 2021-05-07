@@ -1,6 +1,6 @@
 use hartono
 declare @NameArticle varchar(50)
-set @NameArticle = 'TrxFaktur'
+set @NameArticle = 'SAP_ConfigSlocMC'
 
 if (exists(select * from sys.tables where is_replicated = 1 and name=@NameArticle)) 
 begin
