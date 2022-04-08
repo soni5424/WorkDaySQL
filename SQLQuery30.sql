@@ -1,0 +1,1 @@
+select * from CB_TrxCounterBarang where TanggalKeluar is null order by TanggalAntri desc

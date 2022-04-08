@@ -1,0 +1,1 @@
+select * from TrxSo where noso='02A-01-S56-01230'

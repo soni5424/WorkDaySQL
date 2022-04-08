@@ -1,0 +1,1 @@
+select * from TrxFakturInsurance order by tanggal desc 

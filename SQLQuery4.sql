@@ -1,0 +1,1 @@
+UPDATE PR_MasterPromoVDPDetailVoucher SET Status = '0' WHERE NoVoucher = 'VDP-2022-000321'

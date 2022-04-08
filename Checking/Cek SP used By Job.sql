@@ -4,7 +4,7 @@ SELECT j.name
   (
     SELECT 1 FROM msdb.dbo.sysjobsteps AS s
       WHERE s.job_id = j.job_id
-      AND s.command LIKE '%sap_PAddPromoInterface%'
+      AND s.command LIKE '%sap_user%'
   );
 
   --use hartono

@@ -2,9 +2,9 @@ use hartono
 SELECT Routine_name, last_altered
     FROM INFORMATION_SCHEMA.ROUTINES 
     WHERE     
-        ROUTINE_DEFINITION LIKE '%18.1\SQL2005%'
-        AND ROUTINE_DEFINITION LIKE '%%'
-        AND ROUTINE_DEFINITION LIKE '%%'
+        ROUTINE_DEFINITION LIKE '%%'
+        AND ROUTINE_DEFINITION LIKE '%insert into%'
+        AND ROUTINE_DEFINITION LIKE '%TrxFakturInsurance%'
         AND ROUTINE_DEFINITION LIKE '%%'
 	    --and routine_name not like 'HLS_%'
 	    --and routine_name not like 'HWS_%'

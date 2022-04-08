@@ -1,0 +1,1 @@
+select * from TrxFaktur where nofaktur='FK-01-F50-09952'

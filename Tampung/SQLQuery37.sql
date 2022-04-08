@@ -1,0 +1,1 @@
+select nososap_salesdocument, * from TrxFaktur where noso='02B-04-S60-17068'

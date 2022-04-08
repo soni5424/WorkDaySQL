@@ -1,0 +1,1 @@
+select count(*) from TrxFaktur where dbo.getonlydate(tanggal)=dbo.getonlydate(GETDATE())
