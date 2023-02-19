@@ -1,1 +1,1 @@
-select * from MasterParameter where Nama='connstrcco'
+select * from TrxFaktur where keteranganSO like 'INV/20220602/MPL/2370162291%'

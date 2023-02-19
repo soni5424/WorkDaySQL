@@ -1,1 +1,3 @@
-UPDATE PR_MasterPromoVDPDetailVoucher SET Status = '0' WHERE NoVoucher = 'VDP-2022-000321'
+select top 100 * 
+from TrxSODetail 
+where KodeBarang='transport_he' and NoSO like '%10-A%'

@@ -1,2 +1,1 @@
-select * from masterstore
-select * from mastergudang where kodestore='01'
+exec MyH_PGetListArticlePromoFreeStoreWebByKodePromo 'HE', 'O001', '07', '100084762-02'

@@ -1,89 +1,65 @@
-USE [Hartono]
-GO
-/****** Object:  StoredProcedure [dbo].[PBLTGetNextNoBLTPromoVDPSHA2022]    Script Date: 04/04/2022 20:35:27 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
+insert into Tiket_mastertiket values ('182','Hartono Mobile Mandiri Oktober 2022','Bank','10','1','2022-10-15 00:00:00.000','2022-10-31 00:00:00.000','1','','','','','1','Bank','HM-MDRM1022','15 - 31 Oktober 2022','Pusat','')
+
+insert into Tiket_MasterTiketDetailStore values ('182','01')
+insert into Tiket_MasterTiketDetailStore values ('182','04')
+insert into Tiket_MasterTiketDetailStore values ('182','06')
+insert into Tiket_MasterTiketDetailStore values ('182','08')
+insert into Tiket_MasterTiketDetailStore values ('182','12')
+insert into Tiket_MasterTiketDetailStore values ('182','17')
 
 
-
-
-
--- =============================================
--- Author			: Anton Nyoto W.
--- Create date		: 25/03/2022
--- Description		: BLT VDP SHA 2022
--- =============================================
-
-ALTER PROCEDURE [dbo].[PBLTGetNextNoBLTPromoVDPSHA2022]
-	@NoFaktur	varchar(18)
-AS
-begin
-
-	declare @KodeBarang	varchar(50)
-
-	set @KodeBarang = (select isnull((select top 1 d.KodeBarang
-										from
-											TrxFaktur f, 
-											TrxFakturDetail d
-										where
-											f.NoFaktur = @NoFaktur
-											and f.NoFaktur = d.NoFaktur
-											and d.KodeBarang in (
-											'CR-0631F',
-											'CR-0655F',
-											'CR-0671V',
-											'CR-0810F',
-											'CR-1020F/BK',
-											'CR-1020F/WH',
-											'CR-1055BK',
-											'CR-1055RD',
-											'CR-1065RD',
-											'CR-1122',
-											'CR-1413',
-											'CR-1713',
-											'CR-3021',
-											'CR-3521',
-											'CRP-CHSS1009F',
-											'CRP-JHT1012F',
-											'CRP-PK1000S',
-											'CRP-R0612F',
-											'CRP-RT1008F')
-										order by
-											d.SubtotalHarga / d.Jumlah desc
-										), ''))							
-
-	if(@KodeBarang in ('CR-0631F','CR-0655F','CR-0671V','CR-0810F','CR-1020F/BK','CR-1020F/WH','CR-1055BK','CR-1055RD','CR-1065RD','CR-1122','CR-1413','CR-1713','CR-3021','CR-3521','CRP-CHSS1009F','CRP-JHT1012F','CRP-PK1000S','CRP-R0612F','CRP-RT1008F'))
-		begin
-			IF EXISTS (SELECT TOP 1 a.NoBLT
-				FROM MasterBLT2 a
-				JOIN KHAE_MasterVoucher b ON a.NoBLT = b.NoBLT
-				WHERE a.Terpakai = 0
-				AND b.Nama = 'VDP SHA 2 2022')
-				--AND b.KodeBarang = @KodeBarang)
-					SELECT TOP 1 a.NoBLT
-					FROM MasterBLT2 a
-					JOIN KHAE_MasterVoucher b ON a.NoBLT = b.NoBLT
-					WHERE a.Terpakai = 0
-					AND b.Nama = 'VDP SHA 2 2022'
-					ORDER BY NEWID() -- Update Random 04/042022
-					--AND b.KodeBarang = @KodeBarang
-			ELSE
-				SELECT 0
-		end
-	else
-		select 0
-
-	/*
-	if (@KodeBarang in ('LC32DX288IBZ'))
-		select 1 -- 2jt
-	else if (@KodeBarang in ('20LB450A'))
-		select 2 -- 1.2jt
-	else if (@KodeBarang in ('RT20FARWDSA'))
-		select 3 -- 750rb
-	else 
-		select 0
-	*/
-end
-
+insert into TKT_SetupIP values ('HM-MDRM1022','192.168.80.205','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','10.50.17.11','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','10.50.17.30','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','10.50.17.8','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','10.50.26.70','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','10.50.42.138','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','10.50.42.139','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','10.50.50.22','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','10.50.50.46','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','192.168.11.10','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','192.168.11.12','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','192.168.11.42','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','192.168.11.64','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','192.168.13.25','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','192.168.13.63','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','192.168.13.72','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','192.168.14.120','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','192.168.14.162','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','192.168.14.163','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','192.168.14.174','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','192.168.14.42','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','192.168.14.43','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','192.168.14.67','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','192.168.14.68','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','192.168.14.98','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','192.168.16.40','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','192.168.17.12','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','192.168.17.43','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','192.168.17.44','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','192.168.17.45','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','192.168.21.128','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','192.168.21.129','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','192.168.21.130','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','192.168.21.131','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','192.168.21.132','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','192.168.21.35','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','192.168.8.165','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','10.50.6.69','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','10.50.6.53','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','10.50.50.11','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','10.50.130.128','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','10.50.130.129','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','10.50.130.130','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','10.50.6.40','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','10.50.130.52','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','10.50.130.51','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','10.50.42.67','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','10.50.26.173','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','10.50.26.94','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','10.50.50.36','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','10.50.17.236','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','10.50.6.112','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','10.50.130.49','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','10.50.26.84','2022-10-15','2022-10-31')
+insert into TKT_SetupIP values ('HM-MDRM1022','10.50.42.13','2022-10-15','2022-10-31')

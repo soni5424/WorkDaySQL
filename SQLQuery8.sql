@@ -1,4 +1,8 @@
-update MasterParameter set nilai='07/04/2022' where Nama='TanggalUpdateMember'
-select * from MasterParameter where Nama='TanggalUpdateMember'
-update MasterParameter set nilai='1' where Nama='VersiUpdateMember'
-select * from MasterParameter where Nama='VersiUpdateMember'
+exec MyH_PGetPromoFreeToMyHartonoSite2Hist 'HE', '100085546-19'
+
+
+exec MyH_PGetPromoFreeToMyHartonoSite2Hist 'HE', '100085546-19'
+
+select * from h_SAP_PromoPOStoMyHartono where kodepromo1= '100085546-18' order by created desc
+
+select * from h_SAP_PromoServToMyHartono  where kodepromo= '100085546-18' order by created desc
