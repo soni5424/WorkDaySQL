@@ -1,2 +1,3 @@
-select * from MasterParameter where Nama='TanggalUpdateCashier'
-select * from MasterParameter where Nama='VersiUpdateCashier'
+	SELECT *
+	FROM WEB_MasterSlocPriority
+	WHERE KotaPengiriman = 'K012'

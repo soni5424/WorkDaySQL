@@ -1,1 +1,1 @@
-exec MyH_PGetListArticlePromoFreeStoreWebByKodePromo 'HE', 'O001', '07', '100084762-02'
+SELECT * From MasterKotaPengiriman

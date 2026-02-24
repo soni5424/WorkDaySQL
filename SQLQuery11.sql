@@ -1,3 +1,1 @@
-select * from masterpilihan where grup like '%AdminSOWeb%'
-
-select * from masteruser where userID='5017121'
+select * from TrxSOKirim where noso like '02A-07-A93-01438'

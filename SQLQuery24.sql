@@ -1,13 +1,8 @@
-exec MyH_PGetPromoFreeToMyHartonoSite2 'HE', '100082143-01'
-exec MyH_PGetPromoPotHargaToMyHartonoSite2 'HE', '100082143-01'
-
-
-select * from PR_MasterPromo where kodepromo='100082143-01'
-
-select * from h_SAP_PromoPOStoMyHartono where kodepromo1='100082143-01'
-select * from PR_MasterPromoDetailBarangFree where kodepromo='100082143-01'
-
-
-SELECT * FROM dbo.PR_MasterPromoDetailBarangFree
-WHERE ((JenisNilai = 'IDR') OR ((JenisNilai = '%') AND (PotonganVPR <> 100)))
-	and kodepromo='100082143-01'
+select top 10 * from TrxSO order by tanggal desc
+select * from TrxSODetail where noso='02A-07-A10-00006'
+select * from TrxSODetail where noso='02A-07-A33-00012'
+select * from SAP_TrxSOSTO where noso='02A-07-A10-00006'
+select * from SAP_TrxSOSTO where noso='02A-07-A33-00012'
+select * from SAP_TrxSOSTO where noso='02A-07-A81-00011'
+select * from TrxSOKirim where noso='02A-07-A81-00011'
+select * from TrxSOKirim where noso='02A-07-A33-00012'

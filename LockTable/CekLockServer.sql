@@ -8,3 +8,4 @@
 	--and object_name(resource_associated_entity_id) = 'h_SAP_PromoPOStoMyHartono'
 		order by request_session_id asc
 
+		--kill 488
