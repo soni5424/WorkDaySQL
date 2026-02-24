@@ -1,1 +1,0 @@
-select * from BMS_LogSaveSAP where response like '%9420041000126%'

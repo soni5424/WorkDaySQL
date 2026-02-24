@@ -1,1 +1,0 @@
-select top 100 PointRewardTo,* from TrxSO where nomember = '01-00000014' and PointRewardTo!=NoMember order by Tanggal desc

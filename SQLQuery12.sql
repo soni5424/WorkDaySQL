@@ -1,3 +1,0 @@
-SELECT     TOP (200) KodePermission, NamaFeature, fCreate, fRead, fUpdate, fDelete, fPrint, fBarcodeRead, KodeParent, Modul, rowguid
-FROM         MasterPermission
-WHERE     (KodePermission = 'socounterbarangcancelantrian')

@@ -1,1 +1,0 @@
-select * from TrxSOKirim where noso = '02A-07-A93-01438'

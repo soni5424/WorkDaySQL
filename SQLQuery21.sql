@@ -1,1 +1,0 @@
-select * from SAP_Retail_Price_VKP0 where matnr='20LB450A' order by priceid desc

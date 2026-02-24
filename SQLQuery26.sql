@@ -1,1 +1,0 @@
-select * from SAP_TrxSOSTO where noso='02A-07-A81-00012'
