@@ -1,0 +1,72 @@
+-- Cek undistcom banyak/ribuan
+
+-- Use DB Distribution 9.27
+use distribution
+PCekPendingReplicationdetail
+
+
+-- Use DB Hartono 9.27
+use Hartono
+exec [192.168.14.18\SQLPOS].distribution.dbo.PCekPendingReplicationdetail 
+exec [192.168.11.1\SQLPOS].distribution.dbo.PCekPendingReplicationdetail 
+exec [192.168.13.2\SQLPOS].distribution.dbo.PCekPendingReplicationdetail 
+exec [192.168.16.1\SQLPOS].distribution.dbo.PCekPendingReplicationdetail 
+exec [192.168.17.1\SQLPOS].distribution.dbo.PCekPendingReplicationdetail 
+exec [192.168.18.1\SQLPOS].distribution.dbo.PCekPendingReplicationdetail 
+exec [192.168.20.1\SQLPOS].distribution.dbo.PCekPendingReplicationdetail 
+exec [192.168.21.100\SQLPOS].distribution.dbo.PCekPendingReplicationdetail 
+exec [192.168.15.1\SQLPOS].distribution.dbo.PCekPendingReplicationdetail 
+exec [192.168.22.1\SQLPOS].distribution.dbo.PCekPendingReplicationdetail 
+exec [10.50.140.10\SQLPOS].distribution.dbo.PCekPendingReplicationdetail 
+exec [192.168.12.1\SQLPOS].distribution.dbo.PCekPendingReplicationdetail
+exec [10.50.5.70\SQLPOS].distribution.dbo.PCekPendingReplicationdetail 
+
+--select * from hartono.dbo.trxfakturpointmember
+--where tanggal >= '20260602'
+
+declare @tglAwal datetime = '20260602',
+		@tglAkhir datetime = '20260603'
+
+--Faktur
+select dbo.getonlydate(tanggal) as Tanggal, sum(totalharga) as TotalFaktur
+into #a
+from trxfaktur
+where tanggal >= @tglAwal
+and tanggal < @tglAkhir
+group by dbo.getonlydate(tanggal)
+order by dbo.getonlydate(tanggal)
+
+--Retur
+select dbo.getonlydate(tanggal) as Tanggal, sum(totalharga) as TotalRetur
+into #b
+from trxreturpenjualan
+where tanggal >= @tglAwal
+and tanggal < @tglAkhir
+group by dbo.getonlydate(tanggal)
+order by dbo.getonlydate(tanggal)
+
+--Faktur-Retur
+ --drop table #a
+ --drop table #b
+select a.Tanggal, a.TotalFaktur - coalesce(b.TotalRetur,0) as TotalHarga
+from #a a left join #b b on a.tanggal = b.tanggal
+
+--select * from #a  
+--select * from #b
+
+---------------------
+
+
+select nofaktur, totalharga
+from trxfaktur
+where tanggal >= '20260528'
+and tanggal < '20260529'
+order by nofaktur, tanggal
+
+
+select NoReturPenjualan, dbo.getonlydate(tanggal), totalharga
+from trxreturpenjualan
+where tanggal >= '20260528'
+and tanggal < '20260529'
+order by kodestore, tanggal
+
