@@ -37,11 +37,11 @@ select * from sap_article where old_mat_no='SELANGINLET'
 
 
 select dbo.getonlydate(created), count(*) from s_SAP_PricePOStoMyHartono 
-where dbo.getonlydate(created) >= '20260528'
+where dbo.getonlydate(created) >= '20260525'
 group by dbo.getonlydate(created)
 order by dbo.getonlydate(created) desc
 
 select dbo.getonlydate(created), count(*) from sap_retail_price_vkp0 
-where dbo.getonlydate(created) >= '20260528'
+where dbo.getonlydate(created) >= '20260525'
 group by dbo.getonlydate(created)
 order by dbo.getonlydate(created) desc

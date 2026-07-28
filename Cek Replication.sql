@@ -21,11 +21,13 @@ exec [10.50.140.10\SQLPOS].distribution.dbo.PCekPendingReplicationdetail
 exec [192.168.12.1\SQLPOS].distribution.dbo.PCekPendingReplicationdetail
 exec [10.50.5.70\SQLPOS].distribution.dbo.PCekPendingReplicationdetail 
 
---select * from hartono.dbo.trxfakturpointmember
---where tanggal >= '20260602'
+select * from hartono.dbo.trxfakturpointmember
+where dbo.getonlydate(tanggal) = '20260727'
 
-declare @tglAwal datetime = '20260602',
-		@tglAkhir datetime = '20260603'
+declare @tglAwal datetime = '20260727',
+		@tglAkhir datetime = '20260728'
+IF OBJECT_ID('tempdb..#a') IS NOT NULL DROP TABLE #a;
+IF OBJECT_ID('tempdb..#b') IS NOT NULL DROP TABLE #b;
 
 --Faktur
 select dbo.getonlydate(tanggal) as Tanggal, sum(totalharga) as TotalFaktur
@@ -46,8 +48,6 @@ group by dbo.getonlydate(tanggal)
 order by dbo.getonlydate(tanggal)
 
 --Faktur-Retur
- --drop table #a
- --drop table #b
 select a.Tanggal, a.TotalFaktur - coalesce(b.TotalRetur,0) as TotalHarga
 from #a a left join #b b on a.tanggal = b.tanggal
 
@@ -59,14 +59,16 @@ from #a a left join #b b on a.tanggal = b.tanggal
 
 select nofaktur, totalharga
 from trxfaktur
-where tanggal >= '20260528'
-and tanggal < '20260529'
+where tanggal >= '20260713'
+and tanggal < '20260714'
 order by nofaktur, tanggal
+
+select * from TrxFakturDetail where NoFaktur='FK-08-U22-05685'
 
 
 select NoReturPenjualan, dbo.getonlydate(tanggal), totalharga
 from trxreturpenjualan
-where tanggal >= '20260528'
-and tanggal < '20260529'
+where tanggal >= '20260605'
+and tanggal < '20260606'
 order by kodestore, tanggal
 
