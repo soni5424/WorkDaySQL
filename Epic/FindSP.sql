@@ -2,7 +2,7 @@ use hartono
 SELECT Routine_name, last_altered
     FROM INFORMATION_SCHEMA.ROUTINES 
     WHERE     
-        ROUTINE_DEFINITION LIKE '%Arnol%'
+        ROUTINE_DEFINITION LIKE '%no document ref tidak ada.%'
         AND ROUTINE_DEFINITION LIKE '%%'
         AND ROUTINE_DEFINITION LIKE '%%'
         --AND ROUTINE_DEFINITION LIKE '%%'

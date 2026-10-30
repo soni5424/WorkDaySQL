@@ -1,0 +1,14 @@
+FK-07
+
+yg MDR-nya di 0 kan, agar nominal nya tidak ngaco
+
+
+CompositeProvider-nya 
+	ZCP_BIL_PAY
+		VBWTrxFakturBayar (Data dari bulan 1 tahun 2024)
+	ZCP_BIL_PAY2 (TUTP)
+		VBWTrxFakturTUTPBayar (Data dari bulan 1 2025)
+		
+
+
+
